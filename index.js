@@ -13,7 +13,9 @@ app.use(cors())
 app.use(express.static('resume'))
 app.use(fileUpload())
 const { DB_USER, DB_PASS, DB_NAME } = process.env
-
+app.get('/', (req, res) => {
+        res.send('Hello World!')
+    })
 const uri = `mongodb+srv://${DB_USER}:${DB_PASS}@cluster0.mlivs.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
